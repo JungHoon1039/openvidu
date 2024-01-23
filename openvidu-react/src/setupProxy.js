@@ -1,13 +1,9 @@
-import { createProxyMiddleware } from 'http-proxy-middleware';
-
-export default function(app) {
-    app.use(
-        createProxyMiddleware('/openvidu', {
-            target: 'https://i10a610.p.ssafy.io:8050',
-            changeOrigin: true,
-            pathRewrite: {
-                '^/openvidu': ''
-            }
-        })
+const { createProxyMiddleware } = require('http-proxy-middleware');
+module.exports = (app) => {
+    app.use(createProxyMiddleware('/api', {
+        target: 'https://https://i10a601.p.ssafy.io:8050',
+        changeOrigin: true,
+        pathRewrite: { '^/api': '' }
+    })
     );
-};
+}
