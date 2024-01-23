@@ -5,7 +5,10 @@ export default app => {
   createProxyMiddleware(      
       {
         target: 'https://i10a601.p.ssafy.io:8050',
-        changeOrigin: true
+        changeOrigin: true,
+        pathRewrite: {
+          '^/openvidu': ''
+      }
       }
     )
   )
