@@ -7,7 +7,8 @@ import UserVideoComponent from './UserVideoComponent';
 
 // const APPLICATION_SERVER_URL = process.env.NODE_ENV === 'production' ? '' : 'https://i10a601.p.ssafy.io';
 // const APPLICATION_SERVER_URL = 'https://i10a601.p.ssafy.io:8050';
-//const APPLICATION_SERVER_URL = 'http://localhost:5000';
+// const APPLICATION_SERVER_URL = 'http://localhost:5000';
+const APPLICATION_SERVER_URL = 'openvidu';
 
 class App extends Component {
     constructor(props) {
@@ -335,14 +336,14 @@ class App extends Component {
     }
 
     async createSession(sessionId) {
-        const response = await axios.post('/api/sessions', { customSessionId: sessionId }, {
+        const response = await axios.post(APPLICATION_SERVER_URL + '/api/sessions', { customSessionId: sessionId }, {
             headers: { 'Content-Type': 'application/json', },
         });
         return response.data; // The sessionId
     }
 
     async createToken(sessionId) {
-        const response = await axios.post('/api/sessions/' + sessionId + '/connections', {}, {
+        const response = await axios.post(APPLICATION_SERVER_URL + '/api/sessions/' + sessionId + '/connections', {}, {
             headers: { 'Content-Type': 'application/json', },
         });
         return response.data; // The token
