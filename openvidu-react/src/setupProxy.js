@@ -5,9 +5,7 @@ module.exports = function (app) {
     '/openvidu',
     createProxyMiddleware({
       target: 'https://i10a601.p.ssafy.io:8050',
-      pathRewrite: {
-        '^/openvidu': '',
-      },
+      changeOrigin: true
     }),
   );
 };
