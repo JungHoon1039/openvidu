@@ -65,7 +65,9 @@ public class Controller {
 		}
 		ConnectionProperties properties = ConnectionProperties.fromJson(params).build();
 		Connection connection = session.createConnection(properties);
-		return new ResponseEntity<>(connection.getToken(), HttpStatus.OK);
+		String token = connection.getToken();
+		token = "ws://i10a610.p.ssafy.io" + token.substring(14);
+		return new ResponseEntity<>(token, HttpStatus.OK);
 	}
 
 }
