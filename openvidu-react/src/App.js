@@ -6,6 +6,7 @@ import './App.css';
 import UserVideoComponent from './UserVideoComponent';
 
 const APPLICATION_SERVER_URL = 'https://i10a601.p.ssafy.io:8030/api';
+// const APPLICATION_SERVER_URL = 'http://localhost:5000';
 
 class App extends Component {
     constructor(props) {

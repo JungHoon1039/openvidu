@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.openvidu.java.client.Connection;
@@ -21,8 +22,9 @@ import io.openvidu.java.client.OpenViduJavaClientException;
 import io.openvidu.java.client.Session;
 import io.openvidu.java.client.SessionProperties;
 
-@CrossOrigin(origins = "*")
 @RestController
+@CrossOrigin(origins = "*")
+@RequestMapping({"/openvidu"})
 public class Controller {
 
 	@Value("${OPENVIDU_URL}")
@@ -42,7 +44,7 @@ public class Controller {
 	 * @param params The Session properties
 	 * @return The Session ID
 	 */
-	@PostMapping("/api/sessions")
+	@PostMapping("/sessions")
 	public ResponseEntity<String> initializeSession(@RequestBody(required = false) Map<String, Object> params)
 			throws OpenViduJavaClientException, OpenViduHttpException {
 		SessionProperties properties = SessionProperties.fromJson(params).build();
@@ -55,7 +57,7 @@ public class Controller {
 	 * @param params    The Connection properties
 	 * @return The Token associated to the Connection
 	 */
-	@PostMapping("/api/sessions/{sessionId}/connections")
+	@PostMapping("/sessions/{sessionId}/connections")
 	public ResponseEntity<String> createConnection(@PathVariable("sessionId") String sessionId,
 			@RequestBody(required = false) Map<String, Object> params)
 			throws OpenViduJavaClientException, OpenViduHttpException {
