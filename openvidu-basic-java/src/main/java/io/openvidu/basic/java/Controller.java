@@ -21,8 +21,8 @@ import io.openvidu.java.client.OpenViduJavaClientException;
 import io.openvidu.java.client.Session;
 import io.openvidu.java.client.SessionProperties;
 
-@RestController
 @CrossOrigin(origins = "*")
+@RestController
 public class Controller {
 
 	@Value("${OPENVIDU_URL}")
