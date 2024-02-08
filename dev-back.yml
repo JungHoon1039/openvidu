@@ -1,0 +1,73 @@
+spring:
+  datasource:
+    url: jdbc:mariadb://stg-yswa-kr-practice-db-master.mariadb.database.azure.com:3306/S10P12A601?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8
+    driver-class-name: org.mariadb.jdbc.Driver
+    username: S10P12A601
+    password: 0EELQxLpeU
+    tomcat:
+      initial-size: 1
+      max-active: 1
+      min-idle: 1
+      max-idle: 1
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+        jdbc:
+          lob:
+            non_contextual_creation: true
+
+logging:
+  level:
+    p6spy: debug
+    org.hibernate.SQL: off
+
+jwt:
+  secret_key: SSAFY2024SSAFY2024SSAFY2024SSAFY2024SSAFY2024SSAFY2024SSAFY2024SSAFY2024SSAFY2024SSAFY2024SSAFY2024SSAFY2024SSAFY2024SSAFY2024SSAFY2024SSAFY2024
+
+OPENVIDU_URL: https://i10a601.p.ssafy.io:8085
+OPENVIDU_SECRET: MY_SECRET
+
+ffmpeg:
+  path: ffmpeg
+video:
+  outputPath: /home/ubuntu/video
+
+
+file:
+  path: /app/static/gallery/
+  server:
+    url: https://i10a601.p.ssafy.io:8091/gallery/
+
+openai:
+  api:
+    key: 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
+    model: gpt-3.5-turbo
+    assistantId: asst_Y00cuZLVbjNdNBmcF7T4lLi9
+
+oauth2:
+  client:
+    kakao:
+      client-id: 298be7587efe054ffb5aafdc7cecb744
+      redirect-uri: http://i10a601.p.ssafy.io:8091/kakaoLogin
+
+  provider:
+    kakao:
+      token-uri: https://kauth.kakao.com/oauth/token
+      user-info-uri: https://kapi.kakao.com/v2/user/me
+      user-name-attribute: id
+---
+spring:
+  config:
+    activate:
+      on-profile: test
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create
